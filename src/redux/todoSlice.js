@@ -5,6 +5,7 @@ import axios from 'axios'
 const initialState = {
     todos: [],
     loading: false,
+    id: 201
 }
 
 //fetch api
@@ -20,9 +21,8 @@ export const todoSlice = createSlice({
     reducers: {
         //add todo
         addTodo: (state, action) => {
-            let id = 201
             const todo = {
-                id: id++,
+                id: state.id++,
                 userId: Math.round(Math.random() * 10),
                 title: action.payload
             }

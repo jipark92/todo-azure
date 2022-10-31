@@ -13,20 +13,24 @@ import TableBody from '@mui/material/TableBody';
 function App() {
   const [title, setTitle] = useState('')
 
-
+  //action
   const dispatch = useDispatch()
+  //grab redux state values(todos, loading,id)
   const todo = useSelector((state) => state.todo)
 
   useEffect(() => {
     dispatch(fetchTodos())
   }, [])
 
-  console.log('todos data', todo.todos)
-
-
+  //add todo
   const handleAddTodo = (titleValue) => {
     dispatch(addTodo(titleValue))
   }
+
+  //remove todo
+  const handleRemoveTodo = (id) => {
+    dispatch(removeTodo(id));
+  };
 
   return (
     <div className="App">
@@ -36,7 +40,6 @@ function App() {
         setTitle('')
 
       }}>ADD TODO</button>
-      <button>REMOVE TODO</button>
 
       {todo.loading ? <h1>Loading...</h1> : <TableContainer >
         <Table>
@@ -44,6 +47,7 @@ function App() {
             <TableRow>
               <TableCell>USER ID</TableCell>
               <TableCell>TITLE</TableCell>
+              <TableCell>ACTION</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -52,7 +56,9 @@ function App() {
                 <TableRow key={data.id}>
                   <TableCell>{data.userId}</TableCell>
                   <TableCell>{data.title}</TableCell>
-                  {/* <TableCell>{data.completed.toString()}</TableCell> */}
+                  <TableCell>
+                    <button onClick={() => { handleRemoveTodo(data.id) }}>REMOVE TODO</button>
+                  </TableCell>
                 </TableRow>
               )
             })}
