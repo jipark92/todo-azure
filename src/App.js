@@ -1,3 +1,4 @@
+import './css/App.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchTodos } from './redux/todoSlice'
@@ -33,12 +34,14 @@ function App() {
 
   return (
     <div className="App">
-      <input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
-      <button onClick={() => {
-        handleAddTodo(title)
-        setTitle('')
-
-      }}>ADD TODO</button>
+      <h1>Redux Todo List</h1>
+      <form>
+        <input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
+        <button onClick={() => {
+          handleAddTodo(title)
+          setTitle('')
+        }}>ADD TODO</button>
+      </form>
 
       {todo.loading ? <h1>Loading...</h1> : <TableContainer >
         <Table>
