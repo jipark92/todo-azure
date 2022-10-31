@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-
-// https://jsonplaceholder.typicode.com/todos
 const initialState = {
     todos: [],
+    loading: false,
 }
 
 export const fetchTodos = createAsyncThunk('todo/fetchTodos', () => {
@@ -17,10 +16,19 @@ export const todoSlice = createSlice({
     name: 'todo',
     initialState,
     extraReducers: (builder) => {
+        //pending api
+        builder.addCase(fetchTodos.pending, (state) => {
+            state.loading = true
+        })
+        //fulfilled api
         builder.addCase(fetchTodos.fulfilled, (state, action) => {
+            state.loading = false
             state.todos = action.payload
         })
-        // buider
+        //rejected api
+        builder.addCase(fetchTodos.rejected, (state, action) => {
+            state.loading = false
+        })
     }
 })
 
