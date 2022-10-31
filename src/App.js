@@ -1,5 +1,6 @@
 import './css/App.css'
 import { useState, useEffect } from 'react'
+//redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchTodos } from './redux/todoSlice'
 import { addTodo, removeTodo } from './redux/todoSlice'
@@ -14,22 +15,27 @@ import TableBody from '@mui/material/TableBody';
 function App() {
   const [title, setTitle] = useState('')
 
+  //dispatch action
   const dispatch = useDispatch()
-  //grab redux state values(todos, loading, id)
+  //get redux state values(todos, loading, id)
   const todo = useSelector((state) => state.todo)
 
   useEffect(() => {
     dispatch(fetchTodos())
   }, [])
 
-  //add todo
+  //add todo function
   const handleAddTodo = (e) => {
     e.preventDefault()
+    if (!title) {
+      alert('type something in!')
+      return
+    }
     dispatch(addTodo(title))
     setTitle('')
   }
 
-  //remove todo
+  //remove todo function
   const handleRemoveTodo = (id) => {
     dispatch(removeTodo(id));
   };
@@ -40,6 +46,7 @@ function App() {
       <form action="">
         <input
           type='text'
+          placeholder='walk dog'
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
