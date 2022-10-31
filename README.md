@@ -4,9 +4,9 @@
 
 - Axios
 - Redux
+- Material UI
+- Azure
 
 ## Hosted on Azure
 
-### Azure Link
-
-[https://todo-redux.azurewebsites.net/](https://todo-redux.azurewebsites.net/)
+### Azure Link: [https://todo-redux.azurewebsites.net/](https://todo-redux.azurewebsites.net/)
