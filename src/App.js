@@ -13,9 +13,8 @@ import TableBody from '@mui/material/TableBody';
 function App() {
   const [title, setTitle] = useState('')
 
-  //action
   const dispatch = useDispatch()
-  //grab redux state values(todos, loading,id)
+  //grab redux state values(todos, loading, id)
   const todo = useSelector((state) => state.todo)
 
   useEffect(() => {

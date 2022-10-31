@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-//state
+//redux global state
 const initialState = {
     todos: [],
     loading: false,
@@ -19,6 +19,7 @@ export const todoSlice = createSlice({
     name: 'todo',
     initialState,
     reducers: {
+        //actions
         //add todo
         addTodo: (state, action) => {
             const todo = {
