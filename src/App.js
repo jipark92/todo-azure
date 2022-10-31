@@ -23,8 +23,10 @@ function App() {
   }, [])
 
   //add todo
-  const handleAddTodo = (titleValue) => {
-    dispatch(addTodo(titleValue))
+  const handleAddTodo = (e) => {
+    e.preventDefault()
+    dispatch(addTodo(title))
+    setTitle('')
   }
 
   //remove todo
@@ -35,12 +37,13 @@ function App() {
   return (
     <div className="App">
       <h1>Redux Todo List</h1>
-      <form>
-        <input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
-        <button onClick={() => {
-          handleAddTodo(title)
-          setTitle('')
-        }}>ADD TODO</button>
+      <form action="">
+        <input
+          type='text'
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+        />
+        <button onClick={(e) => { handleAddTodo(e) }}>ADD TODO</button>
       </form>
 
       {todo.loading ? <h1>Loading...</h1> : <TableContainer >
