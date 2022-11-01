@@ -28,7 +28,7 @@ export const todoSlice = createSlice({
                 userId: Math.round(Math.random() * 10),
                 title: action.payload
             }
-            state.todos.push(todo)
+            state.todos.unshift(todo)
         },
         //remove todo
         removeTodo: (state, action) => {
