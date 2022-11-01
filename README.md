@@ -9,4 +9,4 @@
 
 ## Hosted on Azure
 
-### Azure Link: [https://todo-redux.azurewebsites.net/](https://todo-redux.azurewebsites.net/)
+Link: [https://redux-azure-todo.azurewebsites.net/](https://redux-azure-todo.azurewebsites.net/)
